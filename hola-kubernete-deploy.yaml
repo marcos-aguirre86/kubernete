@@ -1,0 +1,36 @@
+apiVersion: apps/v1 # Usa apps/v1beta2 para versiones anteriores a 1.9.0
+kind: Deployment
+metadata:
+  name: hola-kubernete-deploy
+  labels:
+    app: hola-kubernete-deploy
+spec:
+  selector:
+    matchLabels:
+      app: hola-kubernete-deploy
+  replicas: 2 # indica al controlador que ejecute 2 pods
+  template:
+    metadata:
+      labels:
+        app: hola-kubernete-deploy
+    spec:
+      containers:
+      - name: hola-kubernete-deploy
+        image: marquitosdocker/hola-kubernete:latest
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hola-kubernete-servicio
+  labels:
+   app: hola-kubernete-deploy
+spec:
+  selector:
+    app.kubernetes.io/name: hola-kubernete-deploy
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer      
