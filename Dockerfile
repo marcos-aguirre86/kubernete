@@ -1,6 +1,6 @@
 FROM openjdk:8-jdk-alpine
 
-ARG JAR_FILE=hola-kubernete.jar
+ARG JAR_FILE=backend.jar
 
 COPY ${JAR_FILE} app.jar
 
