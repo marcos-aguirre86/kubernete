@@ -1,9 +1,25 @@
 Comandos basicos Kubernete:
 --Status del minikube
    minikube status
---corremos el yaml para crear deploy servicios
+--Levantar el minikube
+   minikube start
+	minikube start --force-systemd
+--Parar el minikube
+   minikube stop 
+--Abrir dashboard
+   minikube dashboard
+2)--corremos el yaml para desplegar el  servicios
    minikube service hola-kubernete-servicio
+-------------------------------------------------------------------
+Por posibles errore en kubernete:
+--docker system prune
+--minikube delete
+--minikube start --driver=docker
 
+-------------------------------------------------------------------
+
+1)--Crear service yaml
+   kubectl apply -f hola-kubernete-deploy.yaml
 --obtener los despliegues actuales:
    kubectl get deployment
 --listar los namespace:   
@@ -12,12 +28,25 @@ Comandos basicos Kubernete:
    kubectl get pod
 --listar los servicios:   
    kubectl get service  
---Crear service yaml
-   kubectl apply -f hola-kubernete-deploy.yaml
+--Eliminar deploy
+   kubectl delete deployment <nombre-deployment>
+--Eliminar servicio	
+   kubectl delete service <nombre-servicio>
+--Informacion detallada del pod
+   kubectl describe pod nombre-servicio
+--Listar el ip external
+  kubectl get svc   
+--Listar los configMaps
+  kubectl get configMap  
+--Listar los secrets
+  kubectl get secrets   
+
 
 --Comandos dokcer basicos:
   crear imagen
    docker build -t marquitosdocker/hola-kubernete:latest .
+  push imagen a dockerHub
+   docker push marquitosdocker/<nombre-imagen>
   correr aplicacion
    docker run -p 8080:8080 marquitosdocker/hola-kubernete
   detener un contenedor
