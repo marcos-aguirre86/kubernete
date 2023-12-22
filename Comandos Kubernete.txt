@@ -41,6 +41,7 @@ Por posibles errore en kubernete:
 --Listar los secrets
   kubectl get secrets   
 
+-------------------------------------------------------------------
 
 --Comandos dokcer basicos:
   crear imagen

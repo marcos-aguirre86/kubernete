@@ -43,7 +43,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: db-root-credentials
-              key: password   
+              key: PASSWORD   
         - name: MYSQL_USER
           valueFrom:
             secretKeyRef:
